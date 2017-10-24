@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">BakingApp</string>
+    <string name="title_activity_recipe_details">RecipeDetailsActivity</string>
+    <string name="title_activity_recipe_steps">RecipeStepsActivity</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="network_error_message">Network Error</string>
+    <string name="servings">Servings:</string>
+    <string name="no_internet_connection_error_message">No Internet connection</string>
+    <string name="bullet">\u2022</string>
+    <string name="ingredients">Ingredients List: </string>
+    <string name="current_step">Current Step</string>
+    <string name="step">Step</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="widget_last_viewed_ingredient">Ingredients</string>
 </resources>
