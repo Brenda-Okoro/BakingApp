@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/orange"
         android:orientation="vertical">
 
         <TextView
@@ -27,6 +28,7 @@
             android:id="@+id/tv_ingredients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:layout_marginLeft="8dp"
             android:textSize="16sp" />
 
