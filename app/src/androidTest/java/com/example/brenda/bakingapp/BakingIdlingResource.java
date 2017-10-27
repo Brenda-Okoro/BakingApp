@@ -8,8 +8,7 @@ import com.example.brenda.bakingapp.activities.RecipeListActivity;
  * Created by brenda on 10/24/17.
  */
 
-public class BakingIdlingResource implements IdlingResource
-{
+public class BakingIdlingResource implements IdlingResource {
     private RecipeListActivity activity;
     private IdlingResource.ResourceCallback callback;
 

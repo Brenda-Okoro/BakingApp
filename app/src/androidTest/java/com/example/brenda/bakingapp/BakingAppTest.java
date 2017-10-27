@@ -29,6 +29,7 @@ public class BakingAppTest {
     @Rule
     public ActivityTestRule<RecipeListActivity> mActivityTestRule = new ActivityTestRule<>(RecipeListActivity.class);
     private BakingIdlingResource idlingResource;
+
     @Before
     public void registerIntentServiceIdlingResource() {
         RecipeListActivity activity = mActivityTestRule.getActivity();
@@ -37,23 +38,23 @@ public class BakingAppTest {
     }
 
     @Test
-    public void nutellaPieInActionBar(){
+    public void nutellaPieInActionBar() {
         // First scroll to the position that needs to be matched and click on it.
         final int BROWNIES_POSITION = 0;
         final String BROWNIES = "Nutella Pie";
         onView(withId(R.id.rv_recipe_list))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(BROWNIES_POSITION, click()));
-        onView(withText(BROWNIES) ).check(matches(isDisplayed()));
+        onView(withText(BROWNIES)).check(matches(isDisplayed()));
     }
 
     @Test
-    public void browniesShowsInActionBar(){
+    public void browniesShowsInActionBar() {
         // First scroll to the position that needs to be matched and click on it.
         final int BROWNIES_POSITION = 1;
         final String BROWNIES = "Brownies";
         onView(withId(R.id.rv_recipe_list))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(BROWNIES_POSITION, click()));
-        onView(withText(BROWNIES) ).check(matches(isDisplayed()));
+        onView(withText(BROWNIES)).check(matches(isDisplayed()));
     }
 
     @After

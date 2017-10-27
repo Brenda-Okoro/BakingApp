@@ -38,6 +38,7 @@ public class RecipeParser {
 
     private static String LOG_TAG = RecipeParser.class.getSimpleName();
 
+
     public static ArrayList<Recipes> parseRecipe(JSONArray jsonArray) {
         JSONObject recipeJSON;
         ArrayList<Recipes> recipeList = new ArrayList<>();
@@ -69,7 +70,7 @@ public class RecipeParser {
             }
         }
 
-        return  recipeList;
+        return recipeList;
 
     }
 
@@ -109,7 +110,7 @@ public class RecipeParser {
         String videoURL;
         String thumbnailURL;
 
-        for(int i = 0 ; i < stepListJSON.length(); i++){
+        for (int i = 0; i < stepListJSON.length(); i++) {
             stepJSON = stepListJSON.getJSONObject(i);
             id = stepJSON.getInt(KEY_STEPS_ID);
             shortDescription = stepJSON.getString(KEY_STEPS_SHORT_DESCRIPTION);
@@ -122,7 +123,7 @@ public class RecipeParser {
 
         }
 
-        return  steps;
+        return steps;
     }
 }
 

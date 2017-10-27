@@ -18,7 +18,7 @@ import java.util.List;
 
 public class RecipeStepsFragmentAdapter extends FragmentPagerAdapter {
     private List<Steps> mSteps = new ArrayList<>();
-    Context mContext;
+    private Context mContext;
 
     public RecipeStepsFragmentAdapter(Context context, FragmentManager manager, List<Steps> steps) {
         super(manager);
@@ -29,7 +29,7 @@ public class RecipeStepsFragmentAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
 
-        return  RecipeStepsFragment.getNewInstance(mSteps.get(position));
+        return RecipeStepsFragment.getNewInstance(mSteps.get(position));
     }
 
     @Override
@@ -40,8 +40,8 @@ public class RecipeStepsFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        String step =  mContext.getString(R.string.step);
-        return  step + " " + position;
+        String step = mContext.getString(R.string.step);
+        return step + " " + position;
     }
 }
 

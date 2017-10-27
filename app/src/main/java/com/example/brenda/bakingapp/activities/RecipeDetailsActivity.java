@@ -16,10 +16,10 @@ import com.example.brenda.bakingapp.models.Steps;
  * Created by brenda on 10/23/17.
  */
 
-public class RecipeDetailsActivity extends AppCompatActivity implements RecipeDetailsFragment.FragmentDetailsStepSelectedListener{
+public class RecipeDetailsActivity extends AppCompatActivity implements RecipeDetailsFragment.FragmentDetailsStepSelectedListener {
     public static final String KEY_RECIPE = "recipe";
     public static final String KEY_POSITION = "position";
-    Recipes mRecipe;
+    private Recipes mRecipe;
     private int mSelectedStepPosition = 0;
     private boolean isTablet = false;
 
@@ -56,7 +56,6 @@ public class RecipeDetailsActivity extends AppCompatActivity implements RecipeDe
     }
 
 
-
     private void showRecipeSteps() {
         isTablet = findViewById(R.id.fl_recipe_details_container_step) != null;
         if (isTablet) {
@@ -68,7 +67,7 @@ public class RecipeDetailsActivity extends AppCompatActivity implements RecipeDe
     private void showRecipeDetailsFragment() {
         RecipeDetailsFragment recipeDetailsFragment = RecipeDetailsFragment.getNewInstance(mRecipe);
         getSupportFragmentManager().beginTransaction().replace(
-                R.id.fl_recipe_details_container,
+                R.id.recipe_details_container,
                 recipeDetailsFragment,
                 null
         ).commit();
@@ -98,11 +97,11 @@ public class RecipeDetailsActivity extends AppCompatActivity implements RecipeDe
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             onBackPressed();
-            return  true;
+            return true;
         }
-        return  super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
     }
 
 

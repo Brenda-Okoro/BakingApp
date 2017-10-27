@@ -10,11 +10,11 @@ import com.squareup.picasso.Picasso;
  */
 
 public class ImageUtils {
-    public static void loadImageFromResourcesToImageView(Context context, int resourceId, ImageView imageView){
+    public static void loadImageFromResourcesToImageView(Context context, int resourceId, ImageView imageView) {
         Picasso.with(context).load(resourceId).into(imageView);
     }
 
-    public static void loadImageFromRemoteServerIntoImageView(Context context, String imageURL, ImageView imageView){
+    public static void loadImageFromRemoteServerIntoImageView(Context context, String imageURL, ImageView imageView) {
         Picasso.with(context).load(imageURL).into(imageView);
     }
 }

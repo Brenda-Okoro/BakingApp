@@ -76,8 +76,8 @@ public class Steps implements Parcelable {
         dest.writeString(thumbnailURL);
     }
 
-    public boolean hasVideo(){
-        return  !getVideoURL().isEmpty();
+    public boolean hasVideo() {
+        return !getVideoURL().isEmpty();
     }
 
     public boolean hasThumbnail() {

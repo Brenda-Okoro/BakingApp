@@ -29,7 +29,7 @@ public class RecipeListDetailsAdapter extends RecyclerView.Adapter<RecyclerView.
 
     private static final int INGREDIENT_POSITION = 0;
 
-    public  interface RecipeStepItemTouchListener {
+    public interface RecipeStepItemTouchListener {
         void onRecipeStepItemTouched(int position);
     }
 
@@ -49,11 +49,11 @@ public class RecipeListDetailsAdapter extends RecyclerView.Adapter<RecyclerView.
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
-        if(viewType == INGREDIENT_POSITION){
-            view  = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_ingredient_list, parent, false);
+        if (viewType == INGREDIENT_POSITION) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_ingredient_list, parent, false);
             return new IngredientViewHolder(view, applicationContext);
-        }else {
-            view  = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_step_list_item, parent, false);
+        } else {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_step_list_item, parent, false);
             return new StepViewHolder(applicationContext, view, listener);
         }
 
@@ -61,25 +61,25 @@ public class RecipeListDetailsAdapter extends RecyclerView.Adapter<RecyclerView.
 
     @Override
     public int getItemViewType(int position) {
-        return  position;
+        return position;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if(position == INGREDIENT_POSITION){
+        if (position == INGREDIENT_POSITION) {
             ((IngredientViewHolder) holder).bindView(ingredients);
-        }else {
-            int stepPosition = position-1;
+        } else {
+            int stepPosition = position - 1;
             Steps currentStep = steps.get(stepPosition);
-            boolean isLastPosition = (stepPosition == steps.size()-1);
-            Log.e("dd", isLastPosition+"");
-            ((StepViewHolder)holder).bindView(currentStep, stepPosition, isLastPosition);
+            boolean isLastPosition = (stepPosition == steps.size() - 1);
+            Log.e("dd", isLastPosition + "");
+            ((StepViewHolder) holder).bindView(currentStep, stepPosition, isLastPosition);
         }
     }
 
     @Override
     public int getItemCount() {
-        return steps.size()+1;
+        return steps.size() + 1;
     }
 
     public static class StepViewHolder extends RecyclerView.ViewHolder {
@@ -103,10 +103,10 @@ public class RecipeListDetailsAdapter extends RecyclerView.Adapter<RecyclerView.
         }
 
         public void bindView(final Steps step, final int position) {
-            String stepDescription = position +".  " + step.getShortDescription();
+            String stepDescription = position + ".  " + step.getShortDescription();
             mShortDescription.setText(stepDescription);
 
-            if(step.hasVideo()){
+            if (step.hasVideo()) {
                 mPlayIcon.setVisibility(View.VISIBLE);
                 ImageUtils.loadImageFromResourcesToImageView(context, R.drawable.youtube, mPlayIcon);
             }
@@ -121,10 +121,10 @@ public class RecipeListDetailsAdapter extends RecyclerView.Adapter<RecyclerView.
 
         }
 
-        public void bindView(final Steps step, int position, boolean isLastItem){
+        public void bindView(final Steps step, int position, boolean isLastItem) {
             bindView(step, position);
 
-            if(isLastItem){
+            if (isLastItem) {
                 mDivider.setVisibility(View.GONE);
             }
         }
@@ -132,7 +132,7 @@ public class RecipeListDetailsAdapter extends RecyclerView.Adapter<RecyclerView.
 
     }
 
-    public static class IngredientViewHolder extends RecyclerView.ViewHolder{
+    public static class IngredientViewHolder extends RecyclerView.ViewHolder {
         private TextView mIngredients;
         private Context mApplicationContext;
 
@@ -142,24 +142,23 @@ public class RecipeListDetailsAdapter extends RecyclerView.Adapter<RecyclerView.
             mApplicationContext = applicationContext;
         }
 
-        public void bindView(List<Ingredients> ingredients){
+        public void bindView(List<Ingredients> ingredients) {
             String formattedIngredient;
             int quantity;
             String measure;
             String ingredientDetails;
 
-            for (Ingredients ingredient : ingredients){
-                formattedIngredient  = mApplicationContext.getString(R.string.bullet);
+            for (Ingredients ingredient : ingredients) {
+                formattedIngredient = mApplicationContext.getString(R.string.bullet);
                 quantity = ingredient.getQuantity();
                 measure = ingredient.getMeasure();
                 ingredientDetails = ingredient.getIngredient();
-                formattedIngredient += " " + ingredientDetails + " ("+ quantity +" " + measure + ")";
-                mIngredients.append(formattedIngredient+ "\n\n");
+                formattedIngredient += " " + ingredientDetails + " (" + quantity + " " + measure + ")";
+                mIngredients.append(formattedIngredient + "\n\n");
 
             }
         }
     }
-
 
 
 }

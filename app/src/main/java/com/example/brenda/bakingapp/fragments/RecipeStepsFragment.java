@@ -32,11 +32,11 @@ import com.google.android.exoplayer2.util.Util;
 public class RecipeStepsFragment extends Fragment {
 
     public static final String KEY_STEP = "step";
-    Steps mStep;
-    TextView mFullDescription;
-    SimpleExoPlayerView mPlayerView;
-    SimpleExoPlayer player;
-    ImageView mNoVideoImageView;
+    private Steps mStep;
+    private TextView mFullDescription;
+    private SimpleExoPlayerView mPlayerView;
+    private SimpleExoPlayer player;
+    private ImageView mNoVideoImageView;
 
     boolean playWhenReady = false;
     long playbackPosition = 0;
@@ -49,7 +49,6 @@ public class RecipeStepsFragment extends Fragment {
     public RecipeStepsFragment() {
         // Required empty public constructor
     }
-
 
 
     @Override
@@ -112,7 +111,7 @@ public class RecipeStepsFragment extends Fragment {
         mPlayerView = (SimpleExoPlayerView) rootView.findViewById(R.id.video_view);
         mNoVideoImageView = (ImageView) rootView.findViewById(R.id.iv_no_video);
         bindView();
-        return  rootView;
+        return rootView;
     }
 
     private void initializePlayer() {
@@ -133,13 +132,12 @@ public class RecipeStepsFragment extends Fragment {
                 MediaSource mediaSource = buildMediaSource(uri);
                 player.prepare(mediaSource, true, false);
 
-            } else if(mStep.hasThumbnail()){
+            } else if (mStep.hasThumbnail()) {
                 mPlayerView.setVisibility(View.GONE);
                 mNoVideoImageView.setVisibility(View.VISIBLE);
                 ImageUtils.loadImageFromRemoteServerIntoImageView(getActivity().getApplicationContext(),
                         mStep.getThumbnailURL(), mNoVideoImageView);
-            }
-            else {
+            } else {
                 mPlayerView.setVisibility(View.GONE);
                 mNoVideoImageView.setVisibility(View.VISIBLE);
                 ImageUtils.loadImageFromResourcesToImageView(getActivity().getApplicationContext(),
@@ -157,7 +155,6 @@ public class RecipeStepsFragment extends Fragment {
     }
 
 
-
     private void bindView() {
         if (mStep != null && mFullDescription != null) {
             mFullDescription.setText(mStep.getDescription());
@@ -168,7 +165,7 @@ public class RecipeStepsFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle arguments = getArguments();
-        if(arguments.containsKey(KEY_STEP)){
+        if (arguments.containsKey(KEY_STEP)) {
             mStep = arguments.getParcelable(KEY_STEP);
         }
 
@@ -181,14 +178,14 @@ public class RecipeStepsFragment extends Fragment {
 
     }
 
-    public static RecipeStepsFragment getNewInstance(Steps step){
+    public static RecipeStepsFragment getNewInstance(Steps step) {
         Bundle argument = new Bundle();
         argument.putParcelable(KEY_STEP, step);
 
         RecipeStepsFragment fragment = new RecipeStepsFragment();
         fragment.setArguments(argument);
 
-        return  fragment;
+        return fragment;
     }
 
 

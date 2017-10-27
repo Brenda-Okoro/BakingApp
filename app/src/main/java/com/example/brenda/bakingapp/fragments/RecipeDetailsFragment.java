@@ -31,10 +31,11 @@ public class RecipeDetailsFragment extends Fragment implements RecipeListDetails
     private FragmentDetailsStepSelectedListener listener;
     private static final String KEY_POSITION = "position";
     private static final String KEY_RECIPE = "recipe";
-    LinearLayoutManager linearLayoutManager;
+    private LinearLayoutManager linearLayoutManager;
 
-    public  interface FragmentDetailsStepSelectedListener {
+    public interface FragmentDetailsStepSelectedListener {
         void recipeStepSelected(int position);
+
         boolean isReadToListen();
     }
 
@@ -52,7 +53,7 @@ public class RecipeDetailsFragment extends Fragment implements RecipeListDetails
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle arguments = getArguments();
-        if(arguments.containsKey(RecipeDetailsActivity.KEY_RECIPE)){
+        if (arguments.containsKey(RecipeDetailsActivity.KEY_RECIPE)) {
             mRecipe = arguments.getParcelable(RecipeDetailsActivity.KEY_RECIPE);
         }
     }
@@ -60,12 +61,13 @@ public class RecipeDetailsFragment extends Fragment implements RecipeListDetails
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        if(linearLayoutManager != null && mRecipe != null){
+        if (linearLayoutManager != null && mRecipe != null) {
             outState.putParcelable(KEY_POSITION, linearLayoutManager.onSaveInstanceState());
             outState.putParcelable(KEY_RECIPE, mRecipe);
 
         }
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -74,7 +76,7 @@ public class RecipeDetailsFragment extends Fragment implements RecipeListDetails
         mRecipeListSteps = (RecyclerView) rootView.findViewById(R.id.rv_recipe_list_steps);
         linearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
 
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             mRecipe = savedInstanceState.getParcelable(KEY_RECIPE);
             linearLayoutManager.onRestoreInstanceState(savedInstanceState.getParcelable(KEY_POSITION));
             mRecipeListSteps.setLayoutManager(linearLayoutManager);
@@ -87,7 +89,7 @@ public class RecipeDetailsFragment extends Fragment implements RecipeListDetails
     }
 
 
-    public static  RecipeDetailsFragment getNewInstance(Recipes recipe) {
+    public static RecipeDetailsFragment getNewInstance(Recipes recipe) {
         Bundle args = new Bundle();
         args.putParcelable(RecipeDetailsActivity.KEY_RECIPE, recipe);
         RecipeDetailsFragment fragment = new RecipeDetailsFragment();
@@ -109,9 +111,9 @@ public class RecipeDetailsFragment extends Fragment implements RecipeListDetails
     @Override
     public void onRecipeStepItemTouched(int position) {
         boolean isTablet = listener.isReadToListen();
-        if(isTablet){
+        if (isTablet) {
             listener.recipeStepSelected(position);
-        }else {
+        } else {
             Intent intent = new Intent(getActivity(), RecipeStepsActivity.class);
             intent.putExtra(RecipeStepsActivity.KEY_STEPS, mRecipe.getSteps());
             intent.putExtra(RecipeStepsActivity.KEY_POSITION, position);

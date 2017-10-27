@@ -29,7 +29,7 @@
         android:orientation="horizontal">
 
         <FrameLayout
-            android:id="@+id/fl_recipe_details_container"
+            android:id="@+id/recipe_details_container"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5.5" />

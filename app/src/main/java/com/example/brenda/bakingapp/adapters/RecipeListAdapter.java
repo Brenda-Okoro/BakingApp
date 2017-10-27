@@ -12,6 +12,7 @@ import com.example.brenda.bakingapp.R;
 import com.example.brenda.bakingapp.models.Recipes;
 import com.example.brenda.bakingapp.utils.ImageUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,6 +53,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
 
     @Override
     public int getItemCount() {
+        if (null == recipes) return 0;
         return recipes.size();
     }
 
@@ -66,7 +68,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
         public ViewHolder(Context context, View itemView, RecipeItemTouchListener listener) {
             super(itemView);
             mName = (TextView) itemView.findViewById(R.id.tv_name);
-            mServings = (TextView)  itemView.findViewById(R.id.tv_servings);
+            mServings = (TextView) itemView.findViewById(R.id.tv_servings);
             mImageView = (ImageView) itemView.findViewById(R.id.iv_recipe_image);
             this.context = context;
             mTouchListener = listener;
@@ -77,7 +79,7 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
 
         public void bindView(final Recipes recipe) {
             mName.setText(recipe.getName());
-            String servings = context.getString(R.string.servings) +" "+ recipe.getServings();
+            String servings = context.getString(R.string.servings) + " " + recipe.getServings();
             mServings.setText(servings);
 
             if (recipe.hasImage()) {
@@ -102,7 +104,6 @@ public class RecipeListAdapter extends RecyclerView.Adapter<RecipeListAdapter.Vi
 
 
     }
-
 
 
 }
